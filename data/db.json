@@ -1,0 +1,21 @@
+{
+    "users":[
+        {
+            "id": 1,
+            "username": "pehso",
+            "password": "12345678"
+        },
+        {
+            "id":2,
+            "username": "gosho",
+            "password":"12345678"            
+        }
+    ],
+    "stories":[
+        {
+            "id": 1
+        } 
+
+    ]
+
+}
