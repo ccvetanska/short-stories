@@ -1,7 +1,12 @@
+.navigation {
+    position: absolute;
+    top: 1vh;
+    text-align: right;;
+}
+
 .navigation li {
     list-style: none;
     display: inline;
-    margin-left: 20px;
 }
 
 .navigation li:hover {
@@ -9,10 +14,11 @@
 }
 
 .navigation a {
-    color: white;
+    color: black;
     text-decoration: none;
+    padding: 1vh;
 }
 
-.nav-active {
-    color: purple !important;
+nav .nav-active {
+    background-color: #AEBDCA;
 }

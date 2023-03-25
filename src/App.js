@@ -7,11 +7,12 @@ import { CharacterList } from './components/CharacterList';
 import { Character } from './components/Character';
 
 function App() {
-    return (
-        <div className="App">
-            <header className="App-header">
+    return (    
+        <div className="app">
+            <header className="app-header">
                 <MainNavigation />
-
+            </header>
+            <body>
                 <Routes>
                     <Route path='*' element={<h1>404</h1>} />
                     <Route path='/' element={<Home />} />
@@ -19,7 +20,7 @@ function App() {
                     <Route path='/characters' element={<CharacterList />} />
                     <Route path='/characters/:characterId/*' element={<Character />} />
                 </Routes>
-            </header>
+            </body>
         </div>
     );
 }
