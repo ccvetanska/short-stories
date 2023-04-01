@@ -1,0 +1,85 @@
+body {
+    background-image: url('../images/old-paper-bg.jpg');
+    background-attachment: fixed;
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    -o-background-size: cover;
+    background-size: cover;
+}
+
+.auth {
+    width: 100px;
+    margin: 8em auto;
+}
+
+header,
+footer {
+    background-color: rgba(135,73,9, 0.6);
+    width: 100%;
+    overflow: hidden;
+    color: white;
+    text-shadow: 2px 2px rgba(0, 0, 0, 0.4);
+}
+
+.home {
+    font-size: auto;
+    font-family: Georgia, 'Times New Roman', Times, serif;
+}
+
+header {
+    position: relative;
+    padding: 10px;
+}
+
+header h1 {
+    display: inline-block;
+    color: white;
+    margin-bottom: auto;
+}
+
+header nav {
+    font-size: auto;
+    font-family: Georgia, 'Times New Roman', Times, serif;
+    position: absolute;
+    right: 0;
+    bottom: 8px;
+}
+
+header nav>* {
+    float: left;
+}
+
+header nav #user span{
+    font-size: 18px;
+    margin-right: 1em;
+}
+
+footer {
+    padding: 0.5em;
+    width: 100%;
+    position: absolute;
+    left: 0;
+    bottom: 0;
+}
+
+nav a {margin: 0 0.5em;
+    font-size: 18px;
+    line-height: 50px;
+}
+
+nav a:hover {
+    cursor: pointer;
+    color: #352e28;
+    font-weight: bolder;
+    text-shadow: none;
+}
+
+.home:hover {
+    color: #352e28;
+}
+
+#user,
+#guest {
+    margin: 0;
+    padding: 0;
+}
