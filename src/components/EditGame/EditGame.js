@@ -40,7 +40,7 @@ export const EditGame = ({
                         value={values.title}
                         onChange={changeHandler}
                     />
-
+                    <br></br>
                     <label htmlFor="category">Category:</label>
                     <input
                         type="text"
@@ -49,8 +49,8 @@ export const EditGame = ({
                         value={values.category}
                         onChange={changeHandler}
                     />
-
-                    <label htmlFor="levels">MaxLevel:</label>
+                    <br></br>
+                    {/* <label htmlFor="levels">MaxLevel:</label>
                     <input
                         type="number"
                         id="maxLevel"
@@ -58,16 +58,16 @@ export const EditGame = ({
                         min="1"
                         value={values.maxLevel}
                         onChange={changeHandler}
-                    />
+                    /> */}
 
-                    <label htmlFor="game-img">Image:</label>
+                    {/* <label htmlFor="game-img">Image:</label>
                     <input
                         type="text"
                         id="imageUrl"
                         name="imageUrl"
                         value={values.imageUrl}
                         onChange={changeHandler}
-                    />
+                    /> */}
 
                     <label htmlFor="summary">Summary:</label>
                     <textarea name="summary" id="summary" value={values.summary} onChange={changeHandler}></textarea>
