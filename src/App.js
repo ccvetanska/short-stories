@@ -14,12 +14,14 @@ import { CreateGame } from "./components/CreateGame/CreateGame";
 import { Catalog } from "./components/Catalog/Catalog";
 import { GameDetails } from './components/GameDetails/GameDetails';
 import { EditGame } from './components/EditGame/EditGame';
-// import { withAuth } from './hoc/withAuth';
+// import { openAiServiceFactory } from './services/openaiService';
 
 function App() {
     const navigate = useNavigate();
     const [games, setGames] = useState([]);
     const gameService = gameServiceFactory(); //auth.accessToken
+    // const openAiService = openAiServiceFactory();
+    // openAiService.configure();
 
     useEffect(() => {
         gameService.getAll()
@@ -57,7 +59,7 @@ function App() {
                         <Route path='/login' element={<Login />} />
                         <Route path='/logout' element={<Logout />} />
                         <Route path='/register' element={<Register />} />
-                        <Route path='/create-game' element={<CreateGame onCreateGameSubmit={onCreateGameSubmit} />} />
+                        <Route path='/create-story' element={<CreateGame onCreateGameSubmit={onCreateGameSubmit} />} />
                         <Route path='/catalog' element={<Catalog games={games} />} />
                         <Route path='/catalog/:gameId' element={<GameDetails />} />
                         <Route path='/catalog/:gameId/edit' element={<EditGame onGameEditSubmit={onGameEditSubmit} />} />

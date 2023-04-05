@@ -1,15 +1,13 @@
 import { useForm } from '../../hooks/useForm';
-
 export const CreateGame = ({
-    onCreateGameSubmit,
+    onCreateStorySubmit,
 }) => {
     const { values, changeHandler, onSubmit } = useForm({
         title: '',
-        category: '',
-        maxLevel: '',
-        imageUrl: '',
-        summary: '',
-    }, onCreateGameSubmit);
+        genre: '',
+        story: '',
+        description: ''
+    }, onCreateStorySubmit);
 
     return (
         <section id="create-page" className="auth">
@@ -21,19 +19,13 @@ export const CreateGame = ({
                     <input value={values.title} onChange={changeHandler} type="text" id="title" name="title" placeholder="Enter story title..." />
                     <br></br>
                     <label htmlFor="category">Genre:</label>
-                    <input value={values.category} onChange={changeHandler} type="text" id="category" name="category" placeholder="Enter story genre..." />
+                    <input value={values.genre} onChange={changeHandler} type="text" id="genre" name="genre" placeholder="Enter story genre..." />
                     <br></br>
-                    {/* <label htmlFor="levels">MaxLevel:</label>
-                    <input value={values.maxLevel} onChange={changeHandler} type="number" id="maxLevel" name="maxLevel" min="1" placeholder="1" />
-                    <br></br> */}
-                    {/* <label htmlFor="game-img">Image:</label>
-                    <input value={values.imageUrl} onChange={changeHandler} type="text" id="imageUrl" name="imageUrl" placeholder="Upload a photo..." />
-                    <br></br> */}
-                    <label htmlFor="keywords">Keywords:</label>
-                    <input value={values.imageUrl} onChange={changeHandler} type="text" id="imageUrl" name="imageUrl" placeholder="Enter keywords" />
+                    <label htmlFor="description">Description:</label>
+                    <input value={values.description} onChange={changeHandler} type="text" id="description" name="description" placeholder="Exciting and in one sentence..." />
                     <br></br>
-                    <label htmlFor="summary">Story:</label>
-                    <textarea name="summary" id="summary" value={values.summary} onChange={changeHandler}></textarea>
+                    <label htmlFor="story">Story:</label>
+                    <textarea name="story" id="story" value={values.story} onChange={changeHandler}></textarea>
                     <input className="btn submit" type="submit" value="Submit story" />
                 </div>
             </form>

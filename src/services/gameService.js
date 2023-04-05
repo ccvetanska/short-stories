@@ -28,7 +28,7 @@ export const gameServiceFactory = (token) => {
     
     const edit = (gameId, data) => request.put(`${baseUrl}/${gameId}`, data);
 
-    const deleteGame = (gameId) => request.delete(`${baseUrl}/${gameId}`);
+    const deleteStory = (gameId) => request.delete(`${baseUrl}/${gameId}`);
 
 
     return {
@@ -36,6 +36,6 @@ export const gameServiceFactory = (token) => {
         getOne,
         create,
         edit,
-        delete: deleteGame,
+        delete: deleteStory,
     };
 }

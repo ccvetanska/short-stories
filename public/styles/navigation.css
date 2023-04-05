@@ -62,7 +62,8 @@ footer {
     bottom: 0;
 }
 
-nav a {margin: 0 0.5em;
+nav a {
+    margin: 0 1em;
     font-size: 18px;
     line-height: 50px;
 }

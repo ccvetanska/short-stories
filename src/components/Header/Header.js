@@ -13,8 +13,9 @@ export const Header = () => {
                 <Link to="/catalog">All stories</Link>
                 {isAuthenticated && (
                     <div id="user">
-                        <span>{userEmail}</span>
-                        <Link to="/create-game">New story</Link>
+                        <Link to="/create-story">New story</Link>
+                        <Link to="/my-stories">My stories</Link>
+                        <span>( {userEmail} )</span>
                         <Link to="/logout">Logout</Link>
                     </div>
                 )}
