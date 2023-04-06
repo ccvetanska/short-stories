@@ -1,7 +1,7 @@
 import { useEffect, useState, useReducer } from 'react';
 import { useParams, useNavigate, Link } from 'react-router-dom';
 
-import { gameServiceFactory } from '../../services/gameService';
+import { storyServiceFactory } from '../../services/storyService';
 import * as commentService from '../../services/commentService';
 import { useService } from '../../hooks/useService';
 import { useAuthContext } from '../../contexts/AuthContext';
@@ -13,12 +13,12 @@ export const GameDetails = () => {
     const { gameId } = useParams();
     const { userId, isAuthenticated, userEmail } = useAuthContext();
     const [game, dispatch] = useReducer(gameReducer, {});
-    const gameService = useService(gameServiceFactory)
+    const storyService = useService(storyServiceFactory)
     const navigate = useNavigate();
 
     useEffect(() => {
         Promise.all([
-            gameService.getOne(gameId),
+            storyService.getOne(gameId),
             commentService.getAll(gameId),
         ]).then(([gameData, comments]) => {
             const gameState = {
@@ -43,7 +43,7 @@ export const GameDetails = () => {
     const isOwner = game._ownerId === userId;
 
     const onDeleteClick = async () => {
-        await gameService.delete(game._id);
+        await storyService.delete(game._id);
 
         // TODO: delete from state
 

@@ -1,5 +1,5 @@
 import { useForm } from '../../hooks/useForm';
-export const CreateGame = ({
+export const CreateStory = ({
     onCreateStorySubmit,
 }) => {
     const { values, changeHandler, onSubmit } = useForm({

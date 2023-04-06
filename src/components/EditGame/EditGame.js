@@ -3,13 +3,13 @@ import { useParams } from "react-router-dom";
 
 import { useForm } from "../../hooks/useForm";
 import { useService } from "../../hooks/useService";
-import { gameServiceFactory } from "../../services/gameService";
+import { storyServiceFactory } from "../../services/storyService";
 
 export const EditGame = ({
     onGameEditSubmit,
 }) => {
     const { gameId } = useParams();
-    const gameService = useService(gameServiceFactory);
+    const storyService = useService(storyServiceFactory);
     const { values, changeHandler, onSubmit, changeValues } = useForm({
         _id: '',
         title: '',
@@ -20,7 +20,7 @@ export const EditGame = ({
     }, onGameEditSubmit);
 
     useEffect(() => {
-        gameService.getOne(gameId)
+        storyService.getOne(gameId)
             .then(result => {
                 changeValues(result);
             });
