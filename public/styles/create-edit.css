@@ -46,3 +46,29 @@ textarea {
     color: black;
     box-shadow: inset 6px 6px 6px #c0c2c5, inset -6px -6px 6px white;
 }
+
+.btn.submit {
+    margin-top: 30px;
+    background: #352e28;
+      background-color: rgb(53, 46, 40);
+    height: 60px;
+    border-radius: 3px;
+    color: white;
+    font-size: 26px;
+    cursor: pointer;
+    font-weight: 900;
+    transition: 0.5s;
+    margin-right: 10px;;
+}
+.btn.delete {
+    margin-top: 30px;
+    background-color: #501c1c;
+    height: 60px;
+    border-radius: 3px;
+    color: white;
+    font-size: 26px;
+    cursor: pointer;
+    font-weight: 900;
+    transition: 0.5s;
+    text-align: center;
+}

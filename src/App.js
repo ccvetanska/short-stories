@@ -61,8 +61,8 @@ function App() {
                         <Route path='/register' element={<Register />} />
                         <Route path='/create-story' element={<CreateStory onCreateStorySubmit={onCreateStorySubmit} />} />
                         <Route path='/catalog' element={<Catalog games={games} />} />
-                        <Route path='/catalog/:gameId' element={<GameDetails />} />
-                        <Route path='/catalog/:gameId/edit' element={<EditGame onGameEditSubmit={onGameEditSubmit} />} />
+                        <Route path='/catalog/:storyId' element={<GameDetails />} />
+                        <Route path='/catalog/:storyId/edit' element={<EditGame onGameEditSubmit={onGameEditSubmit} />} />
                     </Routes>
                 </main>
 

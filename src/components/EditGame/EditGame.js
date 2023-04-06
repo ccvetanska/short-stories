@@ -8,31 +8,30 @@ import { storyServiceFactory } from "../../services/storyService";
 export const EditGame = ({
     onGameEditSubmit,
 }) => {
-    const { gameId } = useParams();
+    const { storyId } = useParams();
     const storyService = useService(storyServiceFactory);
     const { values, changeHandler, onSubmit, changeValues } = useForm({
         _id: '',
         title: '',
-        category: '',
-        maxLevel: '',
-        imageUrl: '',
-        summary: '',
+        genre: '',
+        story: '',
+        description: ''
     }, onGameEditSubmit);
 
     useEffect(() => {
-        storyService.getOne(gameId)
+        storyService.getOne(storyId)
             .then(result => {
                 changeValues(result);
             });
-    }, [gameId]);
+    }, [storyId]);
 
     return (
         <section id="edit-page" className="auth">
             <form id="edit" method="post" onSubmit={onSubmit}>
                 <div className="container">
 
-                    <h1>Edit Game</h1>
-                    <label htmlFor="leg-title">Legendary title:</label>
+                    <h1>Edit your story...</h1>
+                    <label htmlFor="title">Title:</label>
                     <input
                         type="text"
                         id="title"
@@ -41,38 +40,27 @@ export const EditGame = ({
                         onChange={changeHandler}
                     />
                     <br></br>
-                    <label htmlFor="category">Category:</label>
+                    <label htmlFor="genre">Genre:</label>
                     <input
                         type="text"
-                        id="category"
-                        name="category"
-                        value={values.category}
+                        id="genre"
+                        name="genre"
+                        value={values.genre}
                         onChange={changeHandler}
                     />
                     <br></br>
-                    {/* <label htmlFor="levels">MaxLevel:</label>
-                    <input
-                        type="number"
-                        id="maxLevel"
-                        name="maxLevel"
-                        min="1"
-                        value={values.maxLevel}
-                        onChange={changeHandler}
-                    /> */}
-
-                    {/* <label htmlFor="game-img">Image:</label>
+                    <label htmlFor="description">Description:</label>
                     <input
                         type="text"
-                        id="imageUrl"
-                        name="imageUrl"
-                        value={values.imageUrl}
+                        id="description"
+                        name="description"
+                        value={values.description}
                         onChange={changeHandler}
-                    /> */}
-
-                    <label htmlFor="summary">Summary:</label>
-                    <textarea name="summary" id="summary" value={values.summary} onChange={changeHandler}></textarea>
-                    <input className="btn submit" type="submit" value="Edit Game" />
-
+                    />
+                    <br></br>
+                    <label htmlFor="story">Story:</label>
+                    <textarea name="story" id="story" value={values.story} onChange={changeHandler}></textarea>
+                    <input className="btn submit" type="submit" value="Edit Story" />
                 </div>
             </form>
         </section>

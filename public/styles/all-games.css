@@ -61,7 +61,7 @@
     color: #161618;
 }
 
-.details-button {
+.details-button, .edit-button {
     margin-top: 30px;
     background: rgb(53, 46, 40);
     color: white;
@@ -70,8 +70,25 @@
     font-weight: normal;
     transition: 0.5s;
     padding: 0.1em 2.5em;
-    position: absolute;
-    bottom: 10px;
-    right: 10px;
-    border-radius: 2px;;
+    border-radius: 2px;
+    float: right;
+}
+
+.details-button:hover, .edit-button:hover {
+    background-color: #75685e;
+}
+
+.story-title{
+    font-size: 2em;
+}
+
+.genre{
+    background-color: rgba(110, 47, 192, 0.2);
+    font-size: 1.5em;
+    text-align: center;
+    margin-bottom: 0.5em;
+}
+
+.description{
+    font-size: 1.2em;
 }
