@@ -3,8 +3,8 @@ import { requestFactory } from './requester';
 const baseUrl = 'http://localhost:3030/data/comments';
 const request = requestFactory();
 
-export const getAll = async (gameId) => {
-    const searchQuery = encodeURIComponent(`gameId="${gameId}"`);
+export const getAll = async (storyId) => {
+    const searchQuery = encodeURIComponent(`storyId="${storyId}"`);
     const relationQuery = encodeURIComponent(`author=_ownerId:users`);
 
     const result = await request.get(`${baseUrl}?where=${searchQuery}&load=${relationQuery}`);
@@ -13,8 +13,8 @@ export const getAll = async (gameId) => {
     return comments;
 };
 
-export const create = async (gameId, comment) => {
-    const result = await request.post(baseUrl, { gameId, comment });
+export const create = async (storyId, comment) => {
+    const result = await request.post(baseUrl, { storyId, comment });
 
     return result;
 };

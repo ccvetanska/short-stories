@@ -40,7 +40,7 @@ function App() {
 
     const onStoryEditSubmit = async (values) => {
         const result = await storyService.edit(values._id, values);
-        setStories(state => state.map(x => x._id === values._id ? result : x))
+        setStories(state => state.map(x => x._id === values._id ? result : x));
         navigate(`/catalog/${values._id}`);
     }
 

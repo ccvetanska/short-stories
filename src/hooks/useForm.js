@@ -13,14 +13,14 @@ export const useForm = (initialValues, onSubmitHandler) => {
     const onSubmit = (e) => {
         e.preventDefault();
 
-        onSubmitHandler(values);
+        onSubmitHandler({...values, ownerName: userEmail});
 
         setValues({...initialValues, ownerName: userEmail});
     };
 
     const changeValues = (newValues) => {
         // TODO: Validate newValues shape (like initialValues)
-
+        
         setValues({...newValues, ownerName: userEmail});
     };
 

@@ -32,15 +32,15 @@ export const GameDetails = ({
         });
     }, [storyId]);
 
-    const onCommentSubmit = async (values) => {
-        const response = await commentService.create(storyId, values.comment);
+    // const onCommentSubmit = async (values) => {
+    //     const response = await commentService.create(storyId, values.comment);
 
-        dispatch({
-            type: 'COMMENT_ADD',
-            payload: response,
-            userEmail,
-        });
-    };
+    //     dispatch({
+    //         type: 'COMMENT_ADD',
+    //         payload: response,
+    //         userEmail,
+    //     });
+    // };
 
     const isOwner = story._ownerId === userId;
 
