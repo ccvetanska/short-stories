@@ -1,17 +1,17 @@
 import { CatalogItem } from "./CatalogItem/CatalogItem";
 
 export const Catalog = ({
-    games,
+    stories,
 }) => {
     return (
         <section id="catalog-page">
             <h1>All Stories</h1>
 
-            {games.map(x =>
+            {stories.map(x =>
                 <CatalogItem key={x._id} {...x} />
             )}
 
-            {games.length === 0 && (
+            {stories.length === 0 && (
                 <h3 className="no-articles">No articles yet</h3>
             )}
         </section>

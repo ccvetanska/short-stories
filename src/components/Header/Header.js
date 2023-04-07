@@ -1,11 +1,13 @@
 import { useContext } from 'react';
-import { Link } from 'react-router-dom';
+import { Link, useLocation } from 'react-router-dom';
 
 import { AuthContext } from '../../contexts/AuthContext';
 
 export const Header = () => {
     const { isAuthenticated, userEmail } = useContext(AuthContext);
-
+    let location = useLocation();
+    console.log(location.pathname);
+    
     return (
         <header>
             <h1><Link className="home" to="/">Short Stories</Link></h1>

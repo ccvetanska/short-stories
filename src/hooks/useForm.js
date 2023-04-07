@@ -1,8 +1,11 @@
-import { useState, useEffect } from 'react';
+import { useState, useContext } from 'react';
+import { AuthContext } from '../contexts/AuthContext';
+
 
 export const useForm = (initialValues, onSubmitHandler) => {
     const [values, setValues] = useState(initialValues);
-
+    const { userEmail } = useContext(AuthContext);
+    
     const changeHandler = (e) => {
         setValues(state => ({...state, [e.target.name]: e.target.value}));
     };
@@ -12,13 +15,13 @@ export const useForm = (initialValues, onSubmitHandler) => {
 
         onSubmitHandler(values);
 
-        setValues(initialValues);
+        setValues({...initialValues, ownerName: userEmail});
     };
 
     const changeValues = (newValues) => {
         // TODO: Validate newValues shape (like initialValues)
-        
-        setValues(newValues);
+
+        setValues({...newValues, ownerName: userEmail});
     };
 
     return {

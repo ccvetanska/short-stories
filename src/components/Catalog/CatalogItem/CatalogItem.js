@@ -6,9 +6,11 @@ import { AuthContext } from '../../../contexts/AuthContext';
 export const CatalogItem = ({
     _id,
     _ownerId,
+    _createdOn,
     title,
     genre,
-    description
+    description,
+    ownerName
 }) => {
     
     const { isAuthenticated, userId } = useContext(AuthContext);
@@ -19,6 +21,8 @@ export const CatalogItem = ({
                 <div className='genre'>{genre}</div>
                 <div className='story-title'>{title}</div>
                 <div className='description'>{description}</div>
+                <div className='created-on'>Created on: {new Date(_createdOn).toLocaleString()}</div>
+                <div className='created-on'>By: {ownerName}</div>
                 {isAuthenticated && userId == _ownerId && (
                     <Link to={`/catalog/${_id}/edit`} className="edit-button">Edit story</Link>
                 )}

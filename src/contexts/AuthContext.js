@@ -22,7 +22,7 @@ export const AuthProvider = ({
 
             navigate('/catalog');
         } catch (error) {
-            console.log('There is a problem');
+            console.log('There is a problem: ' + error.message);
         }
     };
 

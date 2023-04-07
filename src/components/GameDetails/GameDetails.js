@@ -9,17 +9,19 @@ import { useAuthContext } from '../../contexts/AuthContext';
 import { AddComment } from './AddComment/AddComment';
 import { gameReducer } from '../../reducers/gameReducer';
 
-export const GameDetails = () => {
-    const { gameId } = useParams();
+export const GameDetails = ({
+    onStoryDelete
+    }) => {
+    const { storyId } = useParams();
     const { userId, isAuthenticated, userEmail } = useAuthContext();
-    const [game, dispatch] = useReducer(gameReducer, {});
+    const [story, dispatch] = useReducer(gameReducer, {});
     const storyService = useService(storyServiceFactory)
     const navigate = useNavigate();
 
     useEffect(() => {
         Promise.all([
-            storyService.getOne(gameId),
-            commentService.getAll(gameId),
+            storyService.getOne(storyId),
+            commentService.getAll(storyId),
         ]).then(([gameData, comments]) => {
             const gameState = {
                 ...gameData,
@@ -28,10 +30,10 @@ export const GameDetails = () => {
             
             dispatch({type: 'GAME_FETCH', payload: gameState})
         });
-    }, [gameId]);
+    }, [storyId]);
 
     const onCommentSubmit = async (values) => {
-        const response = await commentService.create(gameId, values.comment);
+        const response = await commentService.create(storyId, values.comment);
 
         dispatch({
             type: 'COMMENT_ADD',
@@ -40,31 +42,29 @@ export const GameDetails = () => {
         });
     };
 
-    const isOwner = game._ownerId === userId;
+    const isOwner = story._ownerId === userId;
 
     const onDeleteClick = async () => {
-        await storyService.delete(game._id);
-
-        // TODO: delete from state
-
-        navigate('/catalog');
+        return onStoryDelete(story);
     };
 
     return (
         <section id="game-details">
-            <h1>Game Details</h1>
+
             <div className="info-section">
+                <h1>{story.title}</h1>
 
-                <div className="game-header">
-                    <img className="game-img" src={game.imageUrl} />
-                    <h1>{game.title}</h1>
-                    <span className="levels">MaxLevel: {game.maxLevel}</span>
-                    <p className="type">{game.category}</p>
-                </div>
+                <p className="story-body">{story.story}</p>
+                {
 
-                <p className="text">{game.summary}</p>
+                    isOwner && (
+                        <div className="buttons">
+                            <Link to={`/catalog/${story._id}/edit`} className="button">Edit</Link>
+                            <button className="button" onClick={onDeleteClick}>Delete</button>
+                        </div>
+                    )
 
-                <div className="details-comments">
+                /* <div className="details-comments">
                     <h2>Comments:</h2>
                     <ul>
                         {game.comments && game.comments.map(x => (
@@ -84,10 +84,12 @@ export const GameDetails = () => {
                         <Link to={`/catalog/${game._id}/edit`} className="button">Edit</Link>
                         <button className="button" onClick={onDeleteClick}>Delete</button>
                     </div>
-                )}
+                )} */
+                
+                }
             </div>
-
-            {isAuthenticated && <AddComment onCommentSubmit={onCommentSubmit} />}
+{/* 
+            {isAuthenticated && <AddComment onCommentSubmit={onCommentSubmit} />} */}
         </section>
     );
 };

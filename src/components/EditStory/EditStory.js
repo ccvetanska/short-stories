@@ -1,12 +1,13 @@
-import { useEffect } from "react";
+import { useEffect, useContext } from "react";
 import { useParams } from "react-router-dom";
 
 import { useForm } from "../../hooks/useForm";
 import { useService } from "../../hooks/useService";
 import { storyServiceFactory } from "../../services/storyService";
+import { AuthContext } from '../../contexts/AuthContext';
 
-export const EditGame = ({
-    onGameEditSubmit,
+export const EditStory = ({
+    onStoryEditSubmit,
 }) => {
     const { storyId } = useParams();
     const storyService = useService(storyServiceFactory);
@@ -16,7 +17,7 @@ export const EditGame = ({
         genre: '',
         story: '',
         description: ''
-    }, onGameEditSubmit);
+    }, onStoryEditSubmit);
 
     useEffect(() => {
         storyService.getOne(storyId)

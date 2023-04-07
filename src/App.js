@@ -12,13 +12,14 @@ import { Logout } from "./components/Logout/Logout";
 import { Register } from "./components/Register/Register";
 import { CreateStory } from "./components/CreateStory/CreateStory";
 import { Catalog } from "./components/Catalog/Catalog";
+import { MyStories } from "./components/MyStories/MyStories";
 import { GameDetails } from './components/GameDetails/GameDetails';
-import { EditGame } from './components/EditGame/EditGame';
+import { EditStory } from './components/EditStory/EditStory';
 // import { openAiServiceFactory } from './services/openaiService';
 
 function App() {
     const navigate = useNavigate();
-    const [games, setGames] = useState([]);
+    const [stories, setStories] = useState([]);
     const storyService = storyServiceFactory(); //auth.accessToken
     // const openAiService = openAiServiceFactory();
     // openAiService.configure();
@@ -26,24 +27,27 @@ function App() {
     useEffect(() => {
         storyService.getAll()
             .then(result => {
-                setGames(result)
+                setStories(result)
             })
     }, []);
 
     const onCreateStorySubmit = async (data) => {
-        const newGame = await storyService.create(data);
-
-        setGames(state => [...state, newGame]);
+        const newStory = await storyService.create(data);
+        setStories(state => [...state, newStory]);
 
         navigate('/catalog');
     };
 
-    const onGameEditSubmit = async (values) => {
+    const onStoryEditSubmit = async (values) => {
         const result = await storyService.edit(values._id, values);
-
-        setGames(state => state.map(x => x._id === values._id ? result : x))
-
+        setStories(state => state.map(x => x._id === values._id ? result : x))
         navigate(`/catalog/${values._id}`);
+    }
+
+    const onStoryDelete = async (story) => {
+        await storyService.delete(story._id);
+        setStories(state => state.filter(s => s._id !== story._id));        
+        navigate('/catalog');
     }
 
     // const EnhancedLogin = withAuth(Login);
@@ -60,9 +64,10 @@ function App() {
                         <Route path='/logout' element={<Logout />} />
                         <Route path='/register' element={<Register />} />
                         <Route path='/create-story' element={<CreateStory onCreateStorySubmit={onCreateStorySubmit} />} />
-                        <Route path='/catalog' element={<Catalog games={games} />} />
-                        <Route path='/catalog/:storyId' element={<GameDetails />} />
-                        <Route path='/catalog/:storyId/edit' element={<EditGame onGameEditSubmit={onGameEditSubmit} />} />
+                        <Route path='/catalog' element={<Catalog stories={stories} />} />
+                        <Route path='/my-stories' element={<MyStories stories={stories} />} />
+                        <Route path='/catalog/:storyId' element={<GameDetails onStoryDelete={onStoryDelete} />} />
+                        <Route path='/catalog/:storyId/edit' element={<EditStory onStoryEditSubmit={onStoryEditSubmit} />} />
                     </Routes>
                 </main>
 

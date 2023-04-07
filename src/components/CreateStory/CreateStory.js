@@ -1,4 +1,5 @@
 import { useForm } from '../../hooks/useForm';
+
 export const CreateStory = ({
     onCreateStorySubmit,
 }) => {
@@ -6,7 +7,8 @@ export const CreateStory = ({
         title: '',
         genre: '',
         story: '',
-        description: ''
+        description: '',
+        ownerName: ''
     }, onCreateStorySubmit);
 
     return (

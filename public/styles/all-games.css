@@ -92,3 +92,9 @@
 .description{
     font-size: 1.2em;
 }
+
+.created-on{
+    text-align: right;
+    margin-top: 0.5em;
+    font-style: italic;
+}
