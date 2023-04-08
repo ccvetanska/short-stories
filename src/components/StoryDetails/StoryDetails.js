@@ -6,10 +6,10 @@ import * as commentService from '../../services/commentService';
 import { useService } from '../../hooks/useService';
 import { useAuthContext } from '../../contexts/AuthContext';
 
-import { AddComment } from './AddComment/AddComment';
+// import { AddComment } from './AddComment/AddComment';
 import { gameReducer } from '../../reducers/gameReducer';
 
-export const GameDetails = ({
+export const StoryDetails = ({
     onStoryDelete
     }) => {
     const { storyId } = useParams();

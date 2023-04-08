@@ -13,7 +13,7 @@ import { Register } from "./components/Register/Register";
 import { CreateStory } from "./components/CreateStory/CreateStory";
 import { Catalog } from "./components/Catalog/Catalog";
 import { MyStories } from "./components/MyStories/MyStories";
-import { GameDetails } from './components/GameDetails/GameDetails';
+import { StoryDetails } from './components/StoryDetails/StoryDetails';
 import { EditStory } from './components/EditStory/EditStory';
 // import { openAiServiceFactory } from './services/openaiService';
 
@@ -66,7 +66,7 @@ function App() {
                         <Route path='/create-story' element={<CreateStory onCreateStorySubmit={onCreateStorySubmit} />} />
                         <Route path='/catalog' element={<Catalog stories={stories} />} />
                         <Route path='/my-stories' element={<MyStories stories={stories} />} />
-                        <Route path='/catalog/:storyId' element={<GameDetails onStoryDelete={onStoryDelete} />} />
+                        <Route path='/catalog/:storyId' element={<StoryDetails onStoryDelete={onStoryDelete} />} />
                         <Route path='/catalog/:storyId/edit' element={<EditStory onStoryEditSubmit={onStoryEditSubmit} />} />
                     </Routes>
                 </main>
