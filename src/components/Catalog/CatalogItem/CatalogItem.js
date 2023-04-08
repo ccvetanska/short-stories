@@ -21,7 +21,7 @@ export const CatalogItem = ({
     const onRemoveClick = async () => {
         return onStoryRemovedFromList(_id);
     };
-
+    console.log("my-stories", readingList);
     const onAddClick = async () => {
         return onStoryAddedToList(_id);
     };
@@ -35,8 +35,8 @@ export const CatalogItem = ({
                 <div className='created-on'>Created on: {new Date(_createdOn).toLocaleString()}</div>
                 <div className='created-on'>By: {ownerName}</div>
                 {isAuthenticated && 
-                ((readingList && readingList.length > 0 && readingList.indexOf(_id)!==-1 && (<button className="button reading-list" onClick={onRemoveClick}>Add</button>))||
-                ((!readingList || readingList.length === 0 || readingList.indexOf(_id) ===-1) && (<button className="button reading-list" onClick={onAddClick}>Remove</button>)))
+                ((readingList && readingList.length > 0 && readingList.indexOf(_id)!==-1 && (<button className="button reading-list" onClick={onRemoveClick}>Remove</button>))||
+                ((!readingList || readingList.length === 0 || readingList.indexOf(_id) ===-1) && (<button className="button reading-list" onClick={onAddClick}>Add</button>)))
                     
                 }
                 <Link to={`/catalog/${_id}`} className="details-button">Read story</Link>

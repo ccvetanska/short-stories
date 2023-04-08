@@ -6,7 +6,7 @@ import { AuthContext } from '../../contexts/AuthContext';
 export const Header = () => {
     const { isAuthenticated, userEmail } = useContext(AuthContext);
     let location = useLocation();
-    console.log(location.pathname);
+    // console.log(location.pathname);
     
     return (
         <header>

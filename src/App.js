@@ -63,19 +63,20 @@ function App() {
         readingListService.getList()
             .then(result => {
                 setReadingList(result);
+                console.log("state", result);
             })
     }, []);
     
     const onStoryAddedToList = async (storyId) => {
         const item = await readingListService.addStory(storyId);
         setReadingList(state => [...state, storyId]);
+        console.log("added, state", readingList);
 
     };
     const onStoryRemovedFromList = async (storyId) => {
-        console.log(storyId);
         await readingListService.removeStory(storyId);
         setReadingList(state => state.filter(s => s !== storyId));
-        console.log("readingList", readingList);
+        console.log("removed, state", readingList);
     }
 
     return (
