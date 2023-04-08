@@ -171,3 +171,8 @@
     font-size: 60px;
     font-family: "Agency FB";
 }
+
+.stories-link{
+    font-weight: bolder;
+    text-decoration: underline;
+}

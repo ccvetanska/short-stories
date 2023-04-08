@@ -17,7 +17,7 @@ export const MyStories = ({
                 <h1>My Stories</h1>
     
                 {myStories.map(x =>
-                    <CatalogItem key={x._id} {...x} onStoryRemovedFromList={onStoryRemovedFromList}  onStoryAddedToList={onStoryAddedToList} readingList={readingList} updateReadingList={updateReadingList} />
+                    <CatalogItem key={x._id} {...x} onStoryRemovedFromList={onStoryRemovedFromList} onStoryAddedToList={onStoryAddedToList} readingList={readingList} updateReadingList={updateReadingList} />
                 )}
     
                 {myStories.length === 0 && (
