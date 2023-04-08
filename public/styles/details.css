@@ -77,3 +77,25 @@
     padding: 20px 30px;
     font-size: 22px;
   }
+
+  .button.add-btn{
+    background-image: url('../images/heart-empty.png');
+    background-size: 20px;
+    background-repeat: no-repeat;
+    background-position: center;
+    -webkit-background-size: fit;
+    -moz-background-size: fit;
+    -o-background-size: fit;
+    background-size: fit;
+  }
+
+  .button.remove-btn{
+    background-image: url('../images/heart-full.png');
+    background-size: 20px;
+    background-repeat: no-repeat;
+    background-position: center;
+    -webkit-background-size: fit;
+    -moz-background-size: fit;
+    -o-background-size: fit;
+    background-size: fit;
+  }

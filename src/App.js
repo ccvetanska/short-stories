@@ -78,6 +78,9 @@ function App() {
         setReadingList(state => state.filter(s => s !== storyId));
         console.log("removed, state", readingList);
     }
+    
+    const updateReadingList = async (storyId) => {
+    }
 
     return (
         <AuthProvider>
@@ -91,9 +94,9 @@ function App() {
                         <Route path='/logout' element={<Logout />} />
                         <Route path='/register' element={<Register />} />
                         <Route path='/create-story' element={<CreateStory onCreateStorySubmit={onCreateStorySubmit} />} />
-                        <Route path='/catalog' element={<Catalog stories={stories} readingList={readingList} onStoryRemovedFromList={onStoryRemovedFromList} onStoryAddedToList={onStoryAddedToList} />} />
-                        <Route path='/my-stories' element={<MyStories stories={stories}/>} readingList={readingList} onStoryRemovedFromList={onStoryRemovedFromList} onStoryAddedToList={onStoryAddedToList} />
-                        <Route path='/reading-list' element={<ReadingList stories={stories} readingList={readingList} onStoryRemovedFromList={onStoryRemovedFromList} onStoryAddedToList={onStoryAddedToList}  />} />
+                        <Route path='/catalog' element={<Catalog stories={stories} readingList={readingList} onStoryRemovedFromList={onStoryRemovedFromList} onStoryAddedToList={onStoryAddedToList} updateReadingList={updateReadingList}/>} />
+                        <Route path='/my-stories' element={<MyStories stories={stories}/>} readingList={readingList} onStoryRemovedFromList={onStoryRemovedFromList} onStoryAddedToList={onStoryAddedToList} updateReadingList={updateReadingList}/>
+                        <Route path='/reading-list' element={<ReadingList stories={stories} readingList={readingList} onStoryRemovedFromList={onStoryRemovedFromList} onStoryAddedToList={onStoryAddedToList}  updateReadingList={updateReadingList}/>} />
                         <Route path='/catalog/:storyId' element={<StoryDetails onStoryDelete={onStoryDelete} />} />
                         <Route path='/catalog/:storyId/edit' element={<EditStory onStoryEditSubmit={onStoryEditSubmit} />} />
                     </Routes>
