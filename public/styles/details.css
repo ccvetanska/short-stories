@@ -55,6 +55,11 @@
     border: none;
 }
 
+.button.reading-list{
+    margin-top: 30px;
+    float: left;
+}
+
 .button:hover {
     background-color: #75685e;
     color: white;

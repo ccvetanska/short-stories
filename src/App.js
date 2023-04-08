@@ -15,14 +15,23 @@ import { Catalog } from "./components/Catalog/Catalog";
 import { MyStories } from "./components/MyStories/MyStories";
 import { StoryDetails } from './components/StoryDetails/StoryDetails';
 import { EditStory } from './components/EditStory/EditStory';
+import { ReadingList } from './components/ReadingList/ReadingList';
+import { readingListServiceFactory } from './services/readingListService';
+// import { AuthContext } from './contexts/AuthContext';
+// import { useContext } from 'react';
 // import { openAiServiceFactory } from './services/openaiService';
 
 function App() {
     const navigate = useNavigate();
+
     const [stories, setStories] = useState([]);
-    const storyService = storyServiceFactory(); //auth.accessToken
+    const [readingList, setReadingList]= useState([]);
+
+    const storyService = storyServiceFactory();
+    const readingListService = readingListServiceFactory();
+    // const { isAuthenticated, userId } = useContext(AuthContext);
     // const openAiService = openAiServiceFactory();
-    // openAiService.configure();
+    // openAiService.configure();    
 
     useEffect(() => {
         storyService.getAll()
@@ -50,7 +59,24 @@ function App() {
         navigate('/catalog');
     }
 
-    // const EnhancedLogin = withAuth(Login);
+    useEffect(() => {
+        readingListService.getList()
+            .then(result => {
+                setReadingList(result);
+            })
+    }, []);
+    
+    const onStoryAddedToList = async (storyId) => {
+        const item = await readingListService.addStory(storyId);
+        setReadingList(state => [...state, storyId]);
+
+    };
+    const onStoryRemovedFromList = async (storyId) => {
+        console.log(storyId);
+        await readingListService.removeStory(storyId);
+        setReadingList(state => state.filter(s => s !== storyId));
+        console.log("readingList", readingList);
+    }
 
     return (
         <AuthProvider>
@@ -64,8 +90,9 @@ function App() {
                         <Route path='/logout' element={<Logout />} />
                         <Route path='/register' element={<Register />} />
                         <Route path='/create-story' element={<CreateStory onCreateStorySubmit={onCreateStorySubmit} />} />
-                        <Route path='/catalog' element={<Catalog stories={stories} />} />
-                        <Route path='/my-stories' element={<MyStories stories={stories} />} />
+                        <Route path='/catalog' element={<Catalog stories={stories} readingList={readingList} onStoryRemovedFromList={onStoryRemovedFromList} onStoryAddedToList={onStoryAddedToList} />} />
+                        <Route path='/my-stories' element={<MyStories stories={stories}/>} readingList={readingList} onStoryRemovedFromList={onStoryRemovedFromList} onStoryAddedToList={onStoryAddedToList} />
+                        <Route path='/reading-list' element={<ReadingList stories={stories} readingList={readingList} onStoryRemovedFromList={onStoryRemovedFromList} onStoryAddedToList={onStoryAddedToList}  />} />
                         <Route path='/catalog/:storyId' element={<StoryDetails onStoryDelete={onStoryDelete} />} />
                         <Route path='/catalog/:storyId/edit' element={<EditStory onStoryEditSubmit={onStoryEditSubmit} />} />
                     </Routes>

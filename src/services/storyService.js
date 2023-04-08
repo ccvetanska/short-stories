@@ -20,7 +20,7 @@ export const storyServiceFactory = (token) => {
     
     const create = async (storyData) => {
         const result = await request.post(baseUrl, storyData);
-    
+     
         console.log(result);
     
         return result;

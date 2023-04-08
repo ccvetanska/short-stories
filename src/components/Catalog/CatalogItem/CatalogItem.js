@@ -10,10 +10,21 @@ export const CatalogItem = ({
     title,
     genre,
     description,
-    ownerName
-}) => {
-    
+    ownerName,
+    readingList,
+    onStoryRemovedFromList,
+    onStoryAddedToList
+}
+) => {
+
     const { isAuthenticated, userId } = useContext(AuthContext);
+    const onRemoveClick = async () => {
+        return onStoryRemovedFromList(_id);
+    };
+
+    const onAddClick = async () => {
+        return onStoryAddedToList(_id);
+    };
 
     return (
         <div className="allGames">
@@ -23,10 +34,15 @@ export const CatalogItem = ({
                 <div className='description'>{description}</div>
                 <div className='created-on'>Created on: {new Date(_createdOn).toLocaleString()}</div>
                 <div className='created-on'>By: {ownerName}</div>
+                {isAuthenticated && 
+                ((readingList && readingList.length > 0 && readingList.indexOf(_id)!==-1 && (<button className="button reading-list" onClick={onRemoveClick}>Add</button>))||
+                ((!readingList || readingList.length === 0 || readingList.indexOf(_id) ===-1) && (<button className="button reading-list" onClick={onAddClick}>Remove</button>)))
+                    
+                }
+                <Link to={`/catalog/${_id}`} className="details-button">Read story</Link>
                 {isAuthenticated && userId == _ownerId && (
                     <Link to={`/catalog/${_id}/edit`} className="edit-button">Edit story</Link>
                 )}
-                <Link to={`/catalog/${_id}`} className="details-button">Read story</Link>
             </div>
         </div>
     );
