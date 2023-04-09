@@ -28,8 +28,8 @@ export const CatalogItem = ({
     };
 
     return (
-        <div className="allGames">
-            <div className="allGames-info">
+        <div className="allStories">
+            <div className="allStories-info">
                 <div className='genre'>{genre}</div>
                 <div className='story-title'>{title}</div>
                 <div className='description'>{description}</div>

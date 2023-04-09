@@ -7,14 +7,14 @@ import { useService } from '../../hooks/useService';
 import { useAuthContext } from '../../contexts/AuthContext';
 
 // import { AddComment } from './AddComment/AddComment';
-import { gameReducer } from '../../reducers/gameReducer';
+import { storyReducer } from '../../reducers/storyReducer';
 
 export const StoryDetails = ({
     onStoryDelete
     }) => {
     const { storyId } = useParams();
     const { userId, isAuthenticated, userEmail } = useAuthContext();
-    const [story, dispatch] = useReducer(gameReducer, {});
+    const [story, dispatch] = useReducer(storyReducer, {});
     const storyService = useService(storyServiceFactory)
     const navigate = useNavigate();
 
@@ -28,7 +28,7 @@ export const StoryDetails = ({
                 comments,
             };
             
-            dispatch({type: 'GAME_FETCH', payload: gameState})
+            dispatch({type: 'STORY_FETCH', payload: gameState})
         });
     }, [storyId]);
 
