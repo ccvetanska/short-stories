@@ -38,3 +38,7 @@ HTML/CSS
 # Бъдещи цели
 
 Да бъде имплементирана интеграция с OpenAI, така че при създаване на история (еднократно), полето `description` (кратко описание) да се използва за генериране на илюстрация. След това генерираното изображение да се запазва и да се показва заедно с историята в екрана за четене.
+
+# Attributions
+Background from
+<a href="https://www.freepik.com/free-photo/wooden-floor-background_4100933.htm#query=old%20paper&position=1&from_view=keyword&track=ais">Image by rawpixel.com</a> on Freepik
