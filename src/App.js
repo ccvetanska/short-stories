@@ -17,7 +17,6 @@ import { StoryDetails } from './components/StoryDetails/StoryDetails';
 import { EditStory } from './components/EditStory/EditStory';
 import { ReadingList } from './components/ReadingList/ReadingList';
 import { readingListServiceFactory } from './services/readingListService';
-// import { AuthContext } from './contexts/AuthContext';
 // import { useContext } from 'react';
 // import { openAiServiceFactory } from './services/openaiService';
 
@@ -29,7 +28,7 @@ function App() {
 
     const storyService = storyServiceFactory();
     const readingListService = readingListServiceFactory();
-    // const { isAuthenticated, userId } = useContext(AuthContext);
+    
     // const openAiService = openAiServiceFactory();
     // openAiService.configure();    
 
@@ -63,20 +62,20 @@ function App() {
         readingListService.getList()
             .then(result => {
                 setReadingList(result);
-                console.log("state", result);
+                // console.log("state", result);
             })
     }, []);
     
     const onStoryAddedToList = async (storyId) => {
         const item = await readingListService.addStory(storyId);
         setReadingList(state => [...state, storyId]);
-        console.log("added, state", readingList);
+        // console.log("added, state", readingList);
 
     };
     const onStoryRemovedFromList = async (storyId) => {
         await readingListService.removeStory(storyId);
         setReadingList(state => state.filter(s => s !== storyId));
-        console.log("removed, state", readingList);
+        // console.log("removed, state", readingList);
     }
     
     const updateReadingList = async (storyId) => {

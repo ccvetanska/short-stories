@@ -1,8 +1,7 @@
-@import "typography.css";
+@import "common.css";
 @import "details.css";
 @import "login-register.css";
 @import "create-edit.css";
-@import "welcome.css";
+@import "home.css";
 @import "all-stories.css";
 @import "navigation.css";
-@import "comments.css";

@@ -76,6 +76,7 @@
   .story-body{
     padding: 20px 30px;
     font-size: 22px;
+    white-space: pre-line;
   }
 
   .button.add-btn{
